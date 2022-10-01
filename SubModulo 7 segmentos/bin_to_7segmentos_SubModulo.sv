@@ -11,16 +11,17 @@ module bin_to_7segmentos_SubModulo( input logic clk,
     assign Digito_centena = 1;
     assign Digito_milesima = 1;
     
+    //Auxiliares para conectar puertos internos
     wire unidadImprimir;
     wire decenaImprimir;
     wire decena;
     wire t_muestreo;
     
+    //Conexión de los subsubmodulos
     muestreoDisplay_timer(.clk(clk),.t_1k(t_muestreo));
     Bin_to_7seg_U(.in(in), .clk(clk),.cSegU_out(unidadImprimir));
     Bin_to_7seg_D(.in(in), .clk(clk),.cSegD_out(decenaImprimir));
     Control_displays(.in(in),.clk(clk),.d_timer(t_muestreo), .En_unidad(Digito_unidad), .En_decena(decena));
-    Pintar_Display(.En_decena(decena), .cSegU(unidadImprimir),.cSegD(decenaImprimir), .cSeg(cSeg7));
+    mux2_PintarDisplay(.En_decena(decena), .cSegU(unidadImprimir),.cSegD(decenaImprimir), .cSeg(cSeg7));
     
-
 endmodule
