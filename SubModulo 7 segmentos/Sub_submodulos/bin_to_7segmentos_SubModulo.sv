@@ -18,10 +18,10 @@ module bin_to_7segmentos_SubModulo( input logic clk,
     wire t_muestreo;
     
     //Conexión de los subsubmodulos
-    muestreoDisplay_timer(.clk(clk),.t_1k(t_muestreo));
-    Bin_to_7seg_U(.in(in), .clk(clk),.cSegU_out(unidadImprimir));
-    Bin_to_7seg_D(.in(in), .clk(clk),.cSegD_out(decenaImprimir));
-    Control_displays(.in(in),.clk(clk),.d_timer(t_muestreo), .En_unidad(Digito_unidad), .En_decena(decena));
-    mux2_PintarDisplay(.En_decena(decena), .cSegU(unidadImprimir),.cSegD(decenaImprimir), .cSeg(cSeg7));
+    muestreoDisplay_timer com1(.clk(clk),.t_1k(t_muestreo));
+    Bin_to_7seg_U com2(.in(in), .clk(clk),.cSegU_out(unidadImprimir));
+    Bin_to_7seg_D com3(.in(in), .clk(clk),.cSegD_out(decenaImprimir));
+    Control_displays com4(.in(in),.clk(clk),.d_timer(t_muestreo), .En_unidad(Digito_unidad), .En_decena(decena));
+    mux2_PintarDisplay com5(.En_decena(decena), .cSegU(unidadImprimir),.cSegD(decenaImprimir), .cSeg(cSeg7));
     
 endmodule

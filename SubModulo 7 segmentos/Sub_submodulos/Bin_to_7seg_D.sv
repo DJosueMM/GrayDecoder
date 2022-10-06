@@ -5,13 +5,13 @@ module Bin_to_7seg_D(input logic [3:0]in,
 					 output logic [6:0]cSegD_out );
 
     logic [3:0]Dbin_in; //Entrada al bloque combinacional
-    logic [3:0]cSegD;   // Salida del bloque combinacional
+    logic [6:0]cSegD;   // Salida del bloque combinacional
     
     always_ff @ (posedge clk) //Registro de entrada
-        Dbin_in[3:0] = in[3:0]; //Salida del registro de entrada
+        Dbin_in[3:0] <= in[3:0]; //Salida del registro de entrada
     
     always_ff @ (posedge clk) //Registro de salida
-        cSegD_out = cSegD; //Salida del registro de salida
+        cSegD_out <= cSegD; //Salida del registro de salida
    
    //Bloque combinacional que decodifica binario a 7 segmentos para las decenas
     always_comb

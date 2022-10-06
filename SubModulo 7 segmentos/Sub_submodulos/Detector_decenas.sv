@@ -13,8 +13,8 @@ module Control_displays(input logic [3:0]in,
     logic decena;
     logic d;
     
-    always_ff @ (posedge clk) //Registro de entrada
-        Dbin_in[3:0] = in[3:0]; //Salida del registro de entrada
+    
+    assign Dbin_in[3:0] = in[3:0]; //Salida del registro de entrada
     
     assign En_unidad = unidad;
     assign En_decena = decena;
@@ -31,8 +31,8 @@ module Control_displays(input logic [3:0]in,
     statetype state, nextstate;
     
     // Registro de estado
-    always_ff@(posedge d_timer)
-        state <= nextstate;
+    always_ff@(posedge clk)
+        if(d_timer)  state <= nextstate;
     
     //Logica de siguiente estado
     always_comb
