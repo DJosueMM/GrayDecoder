@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
 module LED_BinDisplay(
-    input [3:0]binNum, 
-    input clk, 
-    output reg LED1, 
-    output reg LED2,
-    output reg LED4,
-    output reg LED8
+    input logic [3:0]binNum, 
+    input logic clk, 
+    output logic LED1, 
+    output logic LED2,
+    output logic LED4,
+    output logic LED8
     );
        
     logic [3:0]copy_binNum;
