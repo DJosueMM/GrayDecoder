@@ -16,7 +16,7 @@ module LED_BinDisplay(
     end
     
     // Se interpreta el binNum para encender los LEDs correspondientes
-    always @(copy_binNum)
+    always_comb
       begin
         LED1 = copy_binNum[0];
         LED2 = copy_binNum[1];
