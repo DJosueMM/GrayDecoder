@@ -1,29 +1,17 @@
 `timescale 1ns / 1ps
 
-module Control_displays(input logic [3:0]in,
+module Control_displays(input logic d,
                         input logic clk, 
                         input logic d_timer,
 					    output logic En_unidad,
 					    output logic En_decena );
 
-    logic [3:0]Dbin_in; //Entrada al bloque combinacional
-    
     // Salida del bloque combinacional
     logic unidad;   
     logic decena;
-    logic d;
-    
-    
-    assign Dbin_in[3:0] = in[3:0]; //Salida del registro de entrada
-    
+
     assign En_unidad = unidad;
     assign En_decena = decena;
-    
-    //Detección de decenas
-    always_comb
-        begin
-            d  =  Dbin_in[3] & Dbin_in[2] |  Dbin_in[3] & Dbin_in[1];
-        end
     
     //FSM
     

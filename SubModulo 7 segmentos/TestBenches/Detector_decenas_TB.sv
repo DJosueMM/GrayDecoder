@@ -1,24 +1,13 @@
 `timescale 1ns / 1ps
 
-
 module Detector_decenas_TB();
 
-    logic reloj; 
-    logic d_timer;
-    logic En_unidad;
-    logic En_decena;
+    logic d; 
     logic [3:0] in; 
+        
+    Detector_Decenas DUT(in, d);
     
-    muestreoDisplay_timer DetectorTB(.clk(reloj),.t_1k(d_timer));
-    
-    Control_displays DUT (in, reloj, d_timer, En_unidad, En_decena );
-    
-    always begin    
-        #10;
-        reloj = ~reloj;
-    end
     initial begin
-            reloj <=1;
             in <= 4'b0000; #1000000;
             in <= 4'b0001; #1000000;
             in <= 4'b0010; #1000000;
