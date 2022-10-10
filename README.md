@@ -2,7 +2,7 @@
 
 ## Descripción general ##
 
-Como parte del proceso de diseño del decodificador de código de Gray a código binario se dividió la solución en tres subsistemas independientes, con la finalidad de simplificar el proceso de diseño, implementación y ensamblaje.
+Como parte del proceso de diseño del decodificador de código de Gray a código binario se dividió la solución en tres subsistemas, con la finalidad de simplificar el proceso de diseño, implementación y ensamblaje.
 
 ![image](https://user-images.githubusercontent.com/81501061/194925774-38dacc09-9e16-4fd7-a97c-b341c5ed96a1.png)
 
