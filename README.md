@@ -138,7 +138,7 @@ Se obtuvieron los siguientes tiempos de slack
 
 ![image](https://user-images.githubusercontent.com/81501061/194942671-d40430e4-b931-4872-bcb6-9a10de103aa5.png)
 
-Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns para completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
+Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns después de completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
 
 Datos del camino con el delay máximo:
 
