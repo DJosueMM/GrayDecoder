@@ -72,7 +72,19 @@ A nivel de código, se programó un bloque always que se mantiene "a la espera" 
 
 ## Análisis de la simulación funcional completa ##
 
-Texto
+Para comprobar el funcionamiento del diseño se creó un testbench de todo el decodificador. Este contempla desde el estímulo de entrada hasta el manejo del display de 7 segmentos. El mismo se encuentra en Proyecto_GrayDecoder/GrayDecoder/GrayDecoder.srcs/sim_1/Testbench_Completo.sv . Esta simulación se realizó con las entradas 0, 1 y 2 en formato Gray. Se espera que el display de 7 segmentos cambie sus bits de acuerdo con estas entradas y, asimismo, los LEDs se enciendan cuando correspondan para representar estas entradas en número binario.
+
+Al ejecutar la simulación, se obtiene un archivo .wcfg que representa las formas de onda para cada variable involucrada en el diseño. La siguiente imagen permite ver estas ondas:
+
+![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/ondasTestbench.JPG?raw=true)
+
+Cabe destacar que la señal de reloj (clk), pese a que en la imagen se visualiza continua, no es continua puesto que es una onda cuadrada con flancos. Sin embargo, se visualiza de esta forma por el Zoom-Fit aplicado para apreciar todas las ondas de la simulación.
+
+En la imagen se observa que al ingresar un número en formato Gray y presionar el switch para leer la entrada (readIt), los LEDs correspondientes se encienden en cada caso. Para el 0, ningún LED se enciende. Para el 1, se enciende el LED1. Finalmente para el 0110 en Gray, se enciende el LED2. Esto indica que se realizó exitosamente la conversión a binario. Por otro lado, el display de 7 segmentos (representado como un número binario de 7 bits) cambia su valor. Considerando la terminación ABCDEF para cada segmento de display, se afirma que este representa correctamente los números de Gray traducidos a binario. 
+
+De esta forma se cumplen los objetivos del proyecto, al programar un diseño en HDL SystemVerilog capaz de representar tanto en LEDs como en un display de 7 segmentos las entradas en formato Gray.
+
+
 
 ## Consumo de recursos y consumo de potencia ##
 
@@ -82,7 +94,7 @@ La FPGA utilizada es la Nexys A7, familia Artix-7, empaquetado CSG324, modelo XC
 
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/recursosUtilizadosFPGA.JPG?raw=true)
 
-De dicha imagen se aprecia que la mayor parte de recursos utilizados son registros. Esto es porque, al utilizar lógica secuencial, se necesitann elementos de memoria para almacenar variables por un cierto tiempo. Considerando la cantidad de registros disponibles en la FPGA, se afirma que el diseño implementado y la cantidad de registros utilizados es proporcional al proyecto desarrollado.
+De dicha imagen se aprecia que la mayor parte de recursos utilizados son registros. Esto es porque, al utilizar lógica secuencial, se necesitan elementos de memoria para almacenar variables por un cierto tiempo. Considerando la cantidad de registros disponibles en la FPGA, se afirma que el diseño implementado y la cantidad de registros utilizados es proporcional al proyecto desarrollado.
 
 Ahora bien, la cantidad de potencia total consumida se reporta en la imagen a continuación. Este dato se obtuvo gracias a las herramientas provistas por Vivado, luego de realizar la síntesis e implementación del diseño.
 
