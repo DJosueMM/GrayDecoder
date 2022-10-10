@@ -50,3 +50,5 @@ set_property IOSTANDARD LVCMOS18 [get_ports Digito_centenaNAN]
 set_property IOSTANDARD LVCMOS18 [get_ports Digito_decenaNAN]
 set_property IOSTANDARD LVCMOS18 [get_ports Digito_milesimaNAN]
 set_property IOSTANDARD LVCMOS18 [get_ports Digito_unidadNAN]
+
+create_clock -period 10.000 -name clk_1 -waveform {0.000 5.000} [get_ports clk]
