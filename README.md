@@ -6,7 +6,7 @@ A continuación, se explicará el funcionamiento del circuito completo y cada su
 
 ## Diagrama de bloques de cada subsistema ##
 
-Texto
+![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloUno.png?raw=true)
 
 ## Análisis de la simulación funcional completa ##
 
