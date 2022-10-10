@@ -149,4 +149,11 @@ Datos del camino con el delay máximo:
 
 ## Problemas encontrados durante el trabajo ##
 
-Texto
+El primer problema estuvo relacionado al software de Vivado. Al inicio se utilizaba por medio del VMware de la Escuela de Electrónica, sin embargo, había problemas en generar las simulaciones de los testbench. Este problema no solo retrasó el desarrollo del proyecto sino que también generó distintos problemas en la organización. Para solucionar esto se instaló de de manera local el software de Vivado, sin embargo, debido a nuestra posición geográfica hubo dificultades en activar las cuentas. Una vez con el software en el dispositivo se logró simular los testbench y corregir los errores de cada submódulo. 
+
+
+El resto de problemas se dieron en la implementación e informe del proyecto. 
+
+En cuanto a la implementación se presentaron problemas a la hora de definir los constraints en el archivo .xdc, lo que se hizo fue copiar de cada submodulo el .xdc para generar el constraint completo, sin embargo, en la acción de copiar y pegar se generaron caractéres invisibles o modificaciones de los existentes, lo que impedía correr la implementación satisfactoriamente. Esto se corrigió al usar el constraint wizard de Vivado, donde por medio de una interfaz muy amigable con el usuario se definieron las respectivas entradas y salidas del Artix-7 y la señal de reloj.
+
+En cuanto al informe, se presentaron problemas con la obtención de datos correctos. Esto fue causado por una mala definición del reloj. Al inicio solamente se asumió que la salida E3 tenía la señal de reloj, pero nunca se definió el comando: create_clock -period 10.000 -name clk_1 -waveform {0.000 5.000} [get_ports clk]. Esto provocaba que los reportes de timing fueran nulos y los de potencia erróneos. Al agregar el comando faltante, se corrigieron los datos de timing y potencia y se logró concluir el informe con los datos correctos. 
