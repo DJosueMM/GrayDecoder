@@ -9,15 +9,27 @@ Este subsistema recibe las siguientes entradas:
 - inSwitch: representación binaria de cuatro bits del código de Gray colocado en los switches de la FPGA.
 - read: señal que se activa cuando se debe empezar el proceso de decodificación de código de Gray a código binario. Se espera un cero cuando no debe empezar la decodificación y un uno cuando se debe comenzar.
 - clk: señal de reloj del sistema sincrónico. Este subsistema trabaja en los flancos positivos del reloj (posedge).
-
 Este subsistema tiene la siguiente salida:
 - binNum: representación binaria de cuatro bits de código de Gray decodificado a código binario.
-
 El funcionamiento del subsistema se basa en estar pendiente de cambios en la señal de entrada inSwitch, para hacer la conversión necesaria a código binario para la salida binNum, siempre y cuando se cumpla que:
 1. El subsistema se encuentra bajo un flanco positivo del reloj.
 2. La señal de read es uno. Si la señal de read es cero el binNum no cambia, mantiene su valor previo.
-
 A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las tres señales de entrada (inSwitch, read, y clk). En caso de cumplirse los requisitos expuestos anteriormente, la salida binNum es actualizada mediante un bloque de tipo case.
+
+### Segundo subsistema: controlador de luces LED
+Este subsistema recibe las siguientes entradas:
+- binNum: representación binaria de cuatro bits resultado de la decodificación del código de Gray.
+- clk: señal de reloj del sistema sincrónico. Este subsistema trabaja en los flancos positivos del reloj (posedge).
+Este subsistema tiene las siguientes salidas:
+- LED1: representación binaria de un bit del primer LED de la FPGA que debe encenderse en función del resultado de la decodificación de código de Gray a código binario.
+- LED2: representación binaria de un bit del segundo LED de la FPGA que debe encenderse en función del resultado de la decodificación de código de Gray a código binario.
+- LED4: representación binaria de un bit del tercer LED de la FPGA que debe encenderse en función del resultado de la decodificación de código de Gray a código binario.
+- LED8: representación binaria de un bit del cuarto LED de la FPGA que debe encenderse en función del resultado de la decodificación de código de Gray a código binario.
+El funcionamiento del subsistema se basa en igualar las salidas LED1, LED2, LED4 y LED8 a los cuatro bits de la entrada binNum siempre y cuando se cumpla que:
+1. El subsistema se encuentra bajo el flanco positivo del reloj.
+A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). En caso de cumplirse los requisitos expuestos anteriormente, las salidas LED1, LED2, LED4 y LED8 son igualadas a los cuatro bits de la entrada binNum.
+
+
 
 ## Diagrama de bloques de cada subsistema ##
 
