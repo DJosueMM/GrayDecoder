@@ -57,7 +57,7 @@ A nivel de código, se programó un bloque always que se mantiene "a la espera" 
 
 Debido a que los displays de siete segmentos en la FPGA son de cátodo común, fue necesario dividir la ruta de datos en unidades y decenas. De esta manera al multiplexar la salida se podrá mostrar en cada display un número distinto. El control de estos datos se realiza mediante una FSM de Moore que tiene como entrada un dato d, que es 1 si hay decenas o 0 si solamente hay unidades, esta detección de decenas es realizada por medio de un bloque combinacional que recibe la entrada en binario. Por otro lado las salidas de la FSM corresponden a los enables de los ánodos en las unidades y decenas (digitoUnidad) (digitoDecena).
 
-
+![image](https://user-images.githubusercontent.com/81501061/194927986-5c0af917-c1e1-40bd-be86-8c0e9c3ef6f5.png)
 
 
 - Si el número no tiene decenas: la FSM se mantiene en el estado S0, habilita el display de las unidades con 0, deshabilita el display de las decenas con un 1 y da paso en el multiplexor de salida al dígito de las unidades.
