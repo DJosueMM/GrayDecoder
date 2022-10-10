@@ -77,11 +77,20 @@ Debido a que los displays de siete segmentos en la FPGA son de cátodo común, f
 ### Diagrama de bloques del primer subsistema:
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloUno.png?raw=true)
 
+![image](https://user-images.githubusercontent.com/81501061/194933694-2b0c3bf4-45ac-4948-b24e-bd3f1ff6a595.png)
+
+
 ### Diagrama de bloques del segundo subsistema:
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloDos.png?raw=true)
 
+![image](https://user-images.githubusercontent.com/81501061/194933573-7c668503-7922-4675-a063-abfd760a03ca.png)
+
+
 ### Diagrama de bloques del tercer subsistema
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloTres.png?raw=true)
+
+![image](https://user-images.githubusercontent.com/81501061/194933400-3d4d612b-8ad4-431e-a83b-7404d23b1e0e.png)
+
 
 ## Análisis de la simulación funcional completa ##
 
