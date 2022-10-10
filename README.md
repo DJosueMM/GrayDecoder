@@ -4,6 +4,9 @@
 
 Como parte del proceso de diseño del decodificador de código de Gray a código binario se dividió la solución en tres subsistemas independientes, con la finalidad de simplificar el proceso de diseño, implementación y ensamblaje.
 
+![image](https://user-images.githubusercontent.com/81501061/194925774-38dacc09-9e16-4fd7-a97c-b341c5ed96a1.png)
+
+
 ### Primer subsistema: decodificador de código de Gray a código binario
 Este subsistema recibe las siguientes entradas:
 - inSwitch: representación binaria de cuatro bits del código de Gray colocado en los switches de la FPGA.
