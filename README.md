@@ -17,7 +17,7 @@ El funcionamiento del subsistema se basa en estar pendiente de cambios en la se�
 1. El subsistema se encuentra bajo un flanco positivo del reloj.
 2. La señal de read es uno. Si la señal de read es cero el binNum no cambia, mantiene su valor previo.
 
-A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las tres señales de entrada (inSwitch, read, y clk). En caso de cumplirse los requisitos expuestos anteriormente, la salida binNum es actualizada mediante un bloque de tipo case.
+A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las tres señales de entrada (inSwitch, read, y clk). En caso de cumplirse los requisitos expuestos anteriormente, se sincroniza la entrada de los switches y la salida binNum es actualizada mediante un bloque de tipo case.
 
 ### Segundo subsistema: controlador de luces LED
 Este subsistema recibe las siguientes entradas:
@@ -41,17 +41,27 @@ Este subsistema recibe las siguientes entradas:
 - clk: señal de reloj del sistema sincrónico. Este subsistema trabaja en los flancos positivos del reloj (posedge).
 
 Este subsistema tiene las siguientes salidas:
-- digitoCentena: representación binaria del display del dígito de las centenas.
-- digitoDecena: representación binaria del display del dígito de las decenas.
-- digitoUnidad: representación binaria del display del dígito de las unidades.
-- digitoMilesima: representación binaria del display del dígito de las milésimas.
+- digitoCentena: enable del ánodo en el display del dígito de las centenas. Siempre en 1.
+- digitoDecena: enable del ánodo en el display del dígito de las decenas.
+- digitoUnidad: enable del ánodo en el display dígito de las unidades.
+- digitoMilesima: enable del ánodo en el display dígito de las milésimas. Simpre en 1.
 - 7Segments: representación binaria de siete bits de las partes del display de siete segmentos que deben encenderse o apagarse.
 
-El funcionamiento del subsistema se basa en igualar las salidas digitoCentena, digitoDecena, digitoUnidad, digitoMilesima y 7Segments en función a lo que se debe mostrar según el valor actual de la entrada binNum, siempre y cuando se cumpla que:
+El funcionamiento del subsistema se basa en igualar la salida 7Segments en función a lo que se debe mostrar según el valor actual de la entrada binNum, siempre y cuando se cumpla que:
 1. El subsistema se encuentra bajo el flanco positivo del reloj.
 
-A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). Una vez que binNum ha cambiado, se valida que partes del display de siete segmentos deben encenderse o apagarse, con el fin de colocar en alto (1) o en bajo (0) cada bit de la salida 7Segments.
+A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). Una vez que binNum ha cambiado, se valida que partes del display de siete segmentos deben encenderse o apagarse, con el fin de colocar en alto (1) o en bajo (0) los cátodos en función de cada bit de la salida 7Segments.
 
+Debido a que los displays de siete segmentos en la FPGA son de cátodo común, fue necesario dividir la ruta de datos en unidades y decenas. De esta manera al multiplexar la salida se podrá mostrar en cada display un número distinto. El control de estos datos se realiza mediante una FSM de Moore que tiene como entrada un dato d, que es 1 si hay decenas o 0 si solamente hay unidades, esta detección de decenas es realizada por medio de un bloque combinacional que recibe la entrada en binario. Por otro lado las salidas de la FSM corresponden a los enables de los ánodos en las unidades y decenas (digitoUnidad) (digitoDecena).
+
+
+
+
+- Si el número no tiene decenas: la FSM se mantiene en el estado S0, habilita el display de las unidades con 0, deshabilita el display de las decenas con un 1 y da paso en el multiplexor de salida al dígito de las unidades.
+
+- Si el número tiene decenas: la FSM cambia cada 2ms del estado S0 al S1 y viceversa. En el estado S0 habilita el display de las unidades con 0, deshabilita el display de las decenas con un 1 y da paso en el multiplexor de salida al dígito de las unidades, en contraste, en el estado S1 deshabilita el display de las unidades con 1, habilita el display de las decenas con un 0 y da paso en el multiplexor de salida al dígito de las decenas. Gracias al muestreo cada 2ms, el ojo humano percibe tanto el dígito de las unidades como el de las decenas al mismo tiempo. Este timer de 2ms se derivó del clk por medio de un contador de flancos.
+
+ 
 ### Funcionamiento general del circuito:
 1. Primero, el circuito recibe los valores colocados en los cuatro switches de entrada de la FPGA.
 2. Estos valores son una representación en código de Gray. La conversión a código binario no ocurre hasta que no se presione la señal de entrada read.
