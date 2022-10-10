@@ -127,7 +127,39 @@ Una parte importante es la potencia dinámica, sin embargo, predomina la potenci
 
 ## Reporte de velocidades máximas de reloj ##
 
-Texto
+El requerimiento de la velocidad de reloj para este proyecto se definió a una velocidad mínima de 50Mhz, el diseño implementado corre a una velocidad de reloj de 100Mhz, todos los datos obtenidos fueron a esta frecuencia.
+
+Parámetros del único reloj utilizado en la implementación:
+
+Clock  Waveform(ns)       Period(ns)      Frequency(MHz)
+-----  ------------       ----------      --------------
+clk_1  {0.000 5.000}      10.000          100.000 
+
+
+Se obtuvieron los siguientes tiempos de slack
+
+Setup :            Worst Slack        6.198ns,  Total Violation        0.000ns
+Hold  :            Worst Slack        0.177ns,  Total Violation        0.000ns
+PW    :            Worst Slack        4.500ns,  Total Violation        0.000ns
+
+Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns para completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
+
+Datos del camino con el delay máximo:
+
+  Data Path Delay:        3.298ns  (logic 0.704ns (21.345%)  route 2.594ns (78.655%))
+  Logic Levels:           2  (LUT4=1 LUT6=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.450ns = ( 14.450 - 10.000 ) 
+    Source Clock Delay      (SCD):    4.811ns
+    Clock Pessimism Removal (CPR):    0.322ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+
+
 
 ## Problemas encontrados durante el trabajo ##
 
