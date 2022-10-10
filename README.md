@@ -13,7 +13,7 @@ A continuación, se explicará el funcionamiento del circuito completo y cada su
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloDos.png?raw=true)
 
 ### Diagrama de bloques del tercer subsistema
-![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloDos.png?raw=true)
+![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloTres.png?raw=true)
 
 ## Análisis de la simulación funcional completa ##
 
