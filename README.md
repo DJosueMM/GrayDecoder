@@ -131,32 +131,18 @@ El requerimiento de la velocidad de reloj para este proyecto se definió a una v
 
 Parámetros del único reloj utilizado en la implementación:
 
-Clock  Waveform(ns)       Period(ns)      Frequency(MHz)
------  ------------       ----------      --------------
-clk_1  {0.000 5.000}      10.000          100.000 
+![image](https://user-images.githubusercontent.com/81501061/194942635-69adfd84-7e67-422e-b8b5-7360852a882e.png)
 
 
 Se obtuvieron los siguientes tiempos de slack
 
-Setup :            Worst Slack        6.198ns,  Total Violation        0.000ns
-Hold  :            Worst Slack        0.177ns,  Total Violation        0.000ns
-PW    :            Worst Slack        4.500ns,  Total Violation        0.000ns
+![image](https://user-images.githubusercontent.com/81501061/194942671-d40430e4-b931-4872-bcb6-9a10de103aa5.png)
 
 Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns para completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
 
 Datos del camino con el delay máximo:
 
-  Data Path Delay:        3.298ns  (logic 0.704ns (21.345%)  route 2.594ns (78.655%))
-  Logic Levels:           2  (LUT4=1 LUT6=1)
-  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.450ns = ( 14.450 - 10.000 ) 
-    Source Clock Delay      (SCD):    4.811ns
-    Clock Pessimism Removal (CPR):    0.322ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
+![image](https://user-images.githubusercontent.com/81501061/194942781-4fa54cbd-2be7-438f-804c-dfb287b5f031.png)
 
 
 
