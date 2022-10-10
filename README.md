@@ -2,7 +2,22 @@
 
 ## Descripción general ##
 
-A continuación, se explicará el funcionamiento del circuito completo y cada subsistema.
+Como parte del proceso de diseño del decodificador de código de Gray a código binario se dividió la solución en tres subsistemas independientes, con la finalidad de simplificar el proceso de diseño, implementación y ensamblaje.
+
+### Primer subsistema: decodificador de código de Gray a código binario
+Este subsistema recibe las siguientes entradas:
+- inSwitch: representación binaria de cuatro bits del código de Gray colocado en los switches de la FPGA.
+- read: señal que se activa cuando se debe empezar el proceso de decodificación de código de Gray a código binario. Se espera un cero cuando no debe empezar la decodificación y un uno cuando se debe comenzar.
+- clk: señal de reloj del sistema sincrónico. Este subsistema trabaja en los flancos positivos del reloj (posedge).
+
+Este subsistema tiene la siguiente salida:
+- binNum: representación binaria de cuatro bits de código de Gray decodificado a código binario.
+
+El funcionamiento del subsistema se basa en estar pendiente de cambios en la señal de entrada inSwitch, para hacer la conversión necesaria a código binario para la salida binNum, siempre y cuando se cumpla que:
+1. El subsistema se encuentra bajo un flanco positivo del reloj.
+2. La señal de read es uno. Si la señal de read es cero el binNum no cambia, mantiene su valor previo.
+
+A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las tres señales de entrada (inSwitch, read, y clk). En caso de cumplirse los requisitos expuestos anteriormente, la salida binNum es actualizada mediante un bloque de tipo case.
 
 ## Diagrama de bloques de cada subsistema ##
 
