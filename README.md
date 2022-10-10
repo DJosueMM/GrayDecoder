@@ -35,6 +35,23 @@ El funcionamiento del subsistema se basa en igualar las salidas LED1, LED2, LED4
 
 A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). En caso de cumplirse los requisitos expuestos anteriormente, las salidas LED1, LED2, LED4 y LED8 son igualadas a los cuatro bits de la entrada binNum.
 
+### Tercer subsistema: convertidor de código binario a display de siete segmentos
+Este subsistema recibe las siguientes entradas:
+- binNum: representación binaria de cuatro bits resultado de la decodificación del código de Gray.
+- clk: señal de reloj del sistema sincrónico. Este subsistema trabaja en los flancos positivos del reloj (posedge).
+
+Este subsistema tiene las siguientes salidas:
+- digitoCentena: representación binaria del display del dígito de las centenas.
+- digitoDecena: representación binaria del display del dígito de las decenas.
+- digitoUnidad: representación binaria del display del dígito de las unidades.
+- digitoMilesima: representación binaria del display del dígito de las milésimas.
+- 7Segments: representación binaria de siete bits de las partes del display de siete segmentos que deben encenderse o apagarse.
+
+El funcionamiento del subsistema se basa en igualar las salidas digitoCentena, digitoDecena, digitoUnidad, digitoMilesima y 7Segments en función a lo que se debe mostrar según el valor actual de la entrada binNum, siempre y cuando se cumpla que:
+1. El subsistema se encuentra bajo el flanco positivo del reloj.
+
+A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). Una vez que binNum ha cambiado, se valida que partes del display de siete segmentos deben encenderse o apagarse, con el fin de colocar en alto (1) o en bajo (0) cada bit de la salida 7Segments.
+
 
 
 ## Diagrama de bloques de cada subsistema ##
