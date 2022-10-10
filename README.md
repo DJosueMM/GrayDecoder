@@ -52,6 +52,11 @@ El funcionamiento del subsistema se basa en igualar las salidas digitoCentena, d
 
 A nivel de código, se programó un bloque always que se mantiene "a la espera" de cambios en las dos señales de entrada (binNum y clk). Una vez que binNum ha cambiado, se valida que partes del display de siete segmentos deben encenderse o apagarse, con el fin de colocar en alto (1) o en bajo (0) cada bit de la salida 7Segments.
 
+### Funcionamiento general del circuito:
+1. Primero, el circuito recibe los valores colocados en los cuatro switches de entrada de la FPGA.
+2. Estos valores son una representación en código de Gray. La conversión a código binario no ocurre hasta que no se presione la señal de entrada read.
+3. Cuando la señal de read está en alto, el primer subsistema se encarga de decodificar el código de Gray a código binario.
+4. Este código binario resultante es colocado en el segundo y el tercer subsistema, para mostrar en los LEDS el resultado en código binario, además de mostrarlo también en el display de siete segmentos.
 
 
 ## Diagrama de bloques de cada subsistema ##
