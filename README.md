@@ -140,7 +140,7 @@ Se obtuvieron los siguientes tiempos de slack
 
 Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns después de completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
 
-Tomando como el periodo minimo el WS de setup, se tiene como una frecuencia máxima aproximada 161MHz.
+Tomando como el periodo minimo el periodo actual (10ns) - (WS de setup), se tiene como una frecuencia máxima aproximada 260MHz.
 
 Datos del camino con el delay máximo:
 
