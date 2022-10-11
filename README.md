@@ -77,11 +77,20 @@ Debido a que los displays de siete segmentos en la FPGA son de cátodo común, f
 ### Diagrama de bloques del primer subsistema:
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloUno.png?raw=true)
 
+![image](https://user-images.githubusercontent.com/81501061/194933694-2b0c3bf4-45ac-4948-b24e-bd3f1ff6a595.png)
+
+
 ### Diagrama de bloques del segundo subsistema:
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloDos.png?raw=true)
 
+![image](https://user-images.githubusercontent.com/81501061/194933573-7c668503-7922-4675-a063-abfd760a03ca.png)
+
+
 ### Diagrama de bloques del tercer subsistema
 ![recursosUtilizadosFPGA](https://github.com/DJosueMM/GrayDecoder/blob/main/Im%C3%A1genes%20Informe/submoduloTres.png?raw=true)
+
+![image](https://user-images.githubusercontent.com/81501061/194933400-3d4d612b-8ad4-431e-a83b-7404d23b1e0e.png)
+
 
 ## Análisis de la simulación funcional completa ##
 
@@ -93,7 +102,7 @@ Al ejecutar la simulación, se obtiene un archivo .wcfg que representa las forma
 
 Cabe destacar que la señal de reloj (clk), pese a que en la imagen se visualiza continua, no es continua puesto que es una onda cuadrada con flancos. Sin embargo, se visualiza de esta forma por el Zoom-Fit aplicado para apreciar todas las ondas de la simulación.
 
-En la imagen se observa que al ingresar un número en formato Gray y presionar el switch para leer la entrada (readIt), los LEDs correspondientes se encienden en cada caso. Para el 0, ningún LED se enciende. Para el 1, se enciende el LED1. Finalmente para el 0110 en Gray, se enciende el LED2. Esto indica que se realizó exitosamente la conversión a binario. Por otro lado, el display de 7 segmentos (representado como un número binario de 7 bits) cambia su valor. Considerando la terminación ABCDEF para cada segmento de display, se afirma que este representa correctamente los números de Gray traducidos a binario. 
+En la imagen se observa que al ingresar un número en formato Gray y presionar el switch para leer la entrada (readIt), los LEDs correspondientes se encienden en cada caso. Para el 0, ningún LED se enciende. Para el 1, se enciende el LED1. Finalmente para el 0011 en Gray, se enciende el LED2. Esto indica que se realizó exitosamente la conversión a binario. Por otro lado, el display de 7 segmentos (representado como un número binario de 7 bits) cambia su valor. Considerando la terminación ABCDEF para cada segmento de display, se afirma que este representa correctamente los números de Gray traducidos a binario. 
 
 De esta forma se cumplen los objetivos del proyecto, al programar un diseño en HDL SystemVerilog capaz de representar tanto en LEDs como en un display de 7 segmentos las entradas en formato Gray.
 
@@ -118,8 +127,33 @@ Una parte importante es la potencia dinámica, sin embargo, predomina la potenci
 
 ## Reporte de velocidades máximas de reloj ##
 
-Texto
+El requerimiento de la velocidad de reloj para este proyecto se definió a una velocidad mínima de 50Mhz, el diseño implementado corre a una velocidad de reloj de 100Mhz, todos los datos obtenidos fueron a esta frecuencia.
+
+Parámetros del único reloj utilizado en la implementación:
+
+![image](https://user-images.githubusercontent.com/81501061/194942635-69adfd84-7e67-422e-b8b5-7360852a882e.png)
+
+
+Se obtuvieron los siguientes tiempos de slack
+
+![image](https://user-images.githubusercontent.com/81501061/194942671-d40430e4-b931-4872-bcb6-9a10de103aa5.png)
+
+Como en la FPGA es muy dificil tener problemas o violaciones del thold, se analizará el tiempo de set-up. De los datos anteriores se puede apreciar que el WS para el setup es de 6.198ns, al tener un periodo de reloj de 10ns implica que de cierta manera al sistema le "sobran" 6.198ns después de completar las tareas y es por esto que no hay violaciones de tsetup. De este análisis se puede inferir que la velocidad del reloj se puede aumentar ya que hay margen de reducir el periodo total.
+
+Datos del camino con el delay máximo:
+
+![image](https://user-images.githubusercontent.com/81501061/194942781-4fa54cbd-2be7-438f-804c-dfb287b5f031.png)
+
+
+
 
 ## Problemas encontrados durante el trabajo ##
 
-Texto
+El primer problema estuvo relacionado al software de Vivado. Al inicio se utilizaba por medio del VMware de la Escuela de Electrónica, sin embargo, había problemas en generar las simulaciones de los testbench. Este problema no solo retrasó el desarrollo del proyecto sino que también generó distintos problemas en la organización. Para solucionar esto se instaló de de manera local el software de Vivado, sin embargo, debido a nuestra posición geográfica hubo dificultades en activar las cuentas. Una vez con el software en el dispositivo se logró simular los testbench y corregir los errores de cada submódulo. 
+
+
+El resto de problemas se dieron en la implementación e informe del proyecto. 
+
+En cuanto a la implementación se presentaron problemas a la hora de definir los constraints en el archivo .xdc, lo que se hizo fue copiar de cada submodulo el .xdc para generar el constraint completo, sin embargo, en la acción de copiar y pegar se generaron caractéres invisibles o modificaciones de los existentes, lo que impedía correr la implementación satisfactoriamente. Esto se corrigió al usar el constraint wizard de Vivado, donde por medio de una interfaz muy amigable con el usuario se definieron las respectivas entradas y salidas del Artix-7 y la señal de reloj.
+
+En cuanto al informe, se presentaron problemas con la obtención de datos correctos. Esto fue causado por una mala definición del reloj. Al inicio solamente se asumió que la salida E3 tenía la señal de reloj, pero nunca se definió el comando: create_clock -period 10.000 -name clk_1 -waveform {0.000 5.000} [get_ports clk]. Esto provocaba que los reportes de timing fueran nulos y los de potencia erróneos. Al agregar el comando faltante, se corrigieron los datos de timing y potencia y se logró concluir el informe con los datos correctos. 

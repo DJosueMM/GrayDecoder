@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Testbench_Completo_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Testbench_Completo" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="18,000,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="14,000,100.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="116"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/Testbench_Completo/clk1" type="logic">
+      <obj_property name="ElementShortName">clk1</obj_property>
+      <obj_property name="ObjectShortName">clk1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/readIt" type="logic">
+      <obj_property name="ElementShortName">readIt</obj_property>
+      <obj_property name="ObjectShortName">readIt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/grayNum" type="array">
+      <obj_property name="ElementShortName">grayNum[3:0]</obj_property>
+      <obj_property name="ObjectShortName">grayNum[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_dec" type="logic">
+      <obj_property name="ElementShortName">Digito_dec</obj_property>
+      <obj_property name="ObjectShortName">Digito_dec</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_uni" type="logic">
+      <obj_property name="ElementShortName">Digito_uni</obj_property>
+      <obj_property name="ObjectShortName">Digito_uni</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_cen" type="logic">
+      <obj_property name="ElementShortName">Digito_cen</obj_property>
+      <obj_property name="ObjectShortName">Digito_cen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_mil" type="logic">
+      <obj_property name="ElementShortName">Digito_mil</obj_property>
+      <obj_property name="ObjectShortName">Digito_mil</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_decenaNAN" type="logic">
+      <obj_property name="ElementShortName">Digito_decenaNAN</obj_property>
+      <obj_property name="ObjectShortName">Digito_decenaNAN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_unidadNAN" type="logic">
+      <obj_property name="ElementShortName">Digito_unidadNAN</obj_property>
+      <obj_property name="ObjectShortName">Digito_unidadNAN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_centenaNAN" type="logic">
+      <obj_property name="ElementShortName">Digito_centenaNAN</obj_property>
+      <obj_property name="ObjectShortName">Digito_centenaNAN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/Digito_milesimaNAN" type="logic">
+      <obj_property name="ElementShortName">Digito_milesimaNAN</obj_property>
+      <obj_property name="ObjectShortName">Digito_milesimaNAN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/cSeg7" type="array">
+      <obj_property name="ElementShortName">cSeg7[6:0]</obj_property>
+      <obj_property name="ObjectShortName">cSeg7[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/LED1" type="logic">
+      <obj_property name="ElementShortName">LED1</obj_property>
+      <obj_property name="ObjectShortName">LED1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/LED2" type="logic">
+      <obj_property name="ElementShortName">LED2</obj_property>
+      <obj_property name="ObjectShortName">LED2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/LED4" type="logic">
+      <obj_property name="ElementShortName">LED4</obj_property>
+      <obj_property name="ObjectShortName">LED4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbench_Completo/LED8" type="logic">
+      <obj_property name="ElementShortName">LED8</obj_property>
+      <obj_property name="ObjectShortName">LED8</obj_property>
+   </wvobject>
+</wave_config>
